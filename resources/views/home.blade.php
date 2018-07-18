@@ -4,18 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+            <div class="card" id="app">
+                <vue-query-builder
+                  :rules="rules"
+                  :initial-query="initialQuery"
+                  @query-updated="updateQuery">
+                </vue-query-builder>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                <input class="btn btn-default" type="button" value="Get Results" @click="getResults">
 
-                    You are logged in!
-                </div>
+                <pre>@{{ JSON.stringify(results, null, 2) }}</pre>
             </div>
         </div>
     </div>
